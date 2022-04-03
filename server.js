@@ -18,4 +18,18 @@ app.get('/magic/:question', (req, res) => {
         `)
 });
 
+// Fibonacci
+
+app.get('/fibonacci/:number', (req, res) => {
+    let workingNumber = Number(req.params.number);
+    function perfectSquare(n) {
+        let squareRt = Math.floor(Math.sqrt(n))
+        return (squareRt * squareRt === n)
+    }
+    perfectSquare(5 * workingNumber * workingNumber + 4) ||
+    perfectSquare(5 * workingNumber * workingNumber - 4) ?
+    res.send("Very good. It is Fibonacci."):
+    res.send("I can tell this is not a fibonacci number.")
+});
+
 app.listen(PORT)
